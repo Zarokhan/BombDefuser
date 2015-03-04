@@ -28,8 +28,8 @@ public class Button extends GameObject {
 	
 	// If this update loop returns true the button has been pressed.
 	public boolean update(){
-		x = Gdx.input.getX() / (float)(Gdx.graphics.getWidth() / 1920f);
-		y = MyGame.HEIGHT - Gdx.input.getY() / (float)(Gdx.graphics.getHeight() / 1080f);
+		x = Gdx.input.getX() / (float)(Gdx.graphics.getWidth() / 1280f);
+		y = MyGame.HEIGHT - Gdx.input.getY() / (float)(Gdx.graphics.getHeight() / 720f);
 		
 		// Hover effect
 		if(this.hitbox.contains(x,  y))

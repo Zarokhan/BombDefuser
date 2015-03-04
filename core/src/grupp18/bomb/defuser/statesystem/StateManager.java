@@ -19,9 +19,13 @@ public class StateManager{
 		this.game = new GameState(game);
 		this.meny = new MenyState(game);
 		
-		currentState = States.Game;
+		currentState = States.Meny;
 	}
-
+	
+	public void setState(States state){
+		currentState = state;
+	}
+	
 	public void update(float delta) {
 		switch (currentState) {
 		case Meny:

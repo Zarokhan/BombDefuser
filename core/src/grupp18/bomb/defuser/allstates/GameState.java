@@ -25,7 +25,6 @@ public class GameState extends State {
 
 	@Override
 	public void render(SpriteBatch batch) {
-		MyGame.res.font.draw(batch, "Prototype", 10, MyGame.HEIGHT - 10);
 		world.render(batch);
 	}
 

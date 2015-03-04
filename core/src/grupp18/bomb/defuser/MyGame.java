@@ -37,6 +37,8 @@ public class MyGame extends ApplicationAdapter {
 		
 		if(Gdx.input.isKeyPressed(Keys.ESCAPE))
 			Gdx.app.exit();
+		if(Gdx.input.isKeyJustPressed(Keys.R))
+			states = new StateManager(this);
 		
 		/*
 		 * Render logic
@@ -47,7 +49,11 @@ public class MyGame extends ApplicationAdapter {
 		
 		batch.begin();
 		states.render(batch);
+		MyGame.res.font.draw(batch, "Prototype", 10, MyGame.HEIGHT - 10);
 		batch.end();
 	}
 	
+	public StateManager getStateManager(){
+		return states;
+	}
 }

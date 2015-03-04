@@ -15,10 +15,12 @@ public class GameObject {
 	protected Color color;
 	
 	public GameObject(Texture tex){
-		this(tex, 0, 0, tex.getWidth(), tex.getHeight(), tex.getWidth(), tex.getHeight(), 0, 0, Color.WHITE);
+		this(tex, 0, 0, tex.getWidth(), tex.getHeight(), 0, 0, tex.getWidth(), tex.getHeight(), Color.WHITE);
 	}
 	public GameObject(Texture tex, float sourceX, float sourceY, float sourceWidth, float sourceHeight, float x, float y, float width, float height, Color color){
 		this.tex = tex;
+		this.width = width;
+		this.height = height;
 		source = new Rectangle(sourceX, sourceY, sourceWidth, sourceHeight);
 		hitbox = new Rectangle(x, y, width, height);
 		pos = new Vector2(x, y);
@@ -44,7 +46,8 @@ public class GameObject {
 	
 	public void render(SpriteBatch batch){
 		batch.setColor(color);
-		batch.draw(tex, hitbox.x, hitbox.y, hitbox.width, hitbox.height);
+		// kommenterat ut den för tillfället
+		//batch.draw(tex, hitbox.x, hitbox.y, hitbox.width, hitbox.height);
 		batch.draw(tex, pos.x, pos.y, origin.x, origin.y, width, height, scale, scale, rotation, (int)source.x, (int)source.y, (int)source.width, (int)source.height, false, false);
 		batch.setColor(Color.WHITE);
 	}
