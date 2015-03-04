@@ -9,10 +9,12 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class ResourceManager {
 	
-	public Texture dot;
+	public Texture dot, logo, btnPlay;
     public BitmapFont font;
 	
 	public ResourceManager(){
+		logo = new Texture(Gdx.files.internal("logo.png"));
+		btnPlay = new Texture(Gdx.files.internal("play.gif"));
 		
 		Pixmap p = new Pixmap(1, 1, Format.RGB565);
 		p.setColor(Color.WHITE);

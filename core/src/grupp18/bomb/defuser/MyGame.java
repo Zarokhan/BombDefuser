@@ -13,7 +13,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class MyGame extends ApplicationAdapter {
 	
 	public final static int WIDTH = 1280, HEIGHT = 720;
-	private static ResourceManager res;
+	public static ResourceManager res;
 	
 	private SpriteBatch batch;
 	private StateManager states;
@@ -26,17 +26,21 @@ public class MyGame extends ApplicationAdapter {
 		states = new StateManager(this);
 	}
 	
-	public void update(){
+	@Override
+	public void render () {
+		/*
+		 * Update logic
+		 */
+		
 		float delta = Gdx.graphics.getRawDeltaTime();
 		states.update(delta);
 		
 		if(Gdx.input.isKeyPressed(Keys.ESCAPE))
 			Gdx.app.exit();
-	}
-	
-	@Override
-	public void render () {
-		update();
+		
+		/*
+		 * Render logic
+		 */
 		
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -46,11 +50,4 @@ public class MyGame extends ApplicationAdapter {
 		batch.end();
 	}
 	
-	/*
-	 * GETTERS & SETTERS
-	 */
-	
-	public static ResourceManager getRes() {
-		return res;
-	}
 }
