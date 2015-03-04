@@ -1,5 +1,6 @@
 package grupp18.bomb.defuser.utilities;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
@@ -11,19 +12,22 @@ public class GameObject {
 	protected Vector2 pos, origin;
 	protected float width, height, scale, scaleX, scaleY, rotation;
 	protected Rectangle source, hitbox;
+	protected Color color;
 	
 	public GameObject(Texture tex){
+		this(tex, 0, 0, tex.getWidth(), tex.getHeight(), tex.getWidth(), tex.getHeight(), 0, 0, Color.WHITE);
+	}
+	public GameObject(Texture tex, float sourceX, float sourceY, float sourceWidth, float sourceHeight, float x, float y, float width, float height, Color color){
 		this.tex = tex;
-		width = tex.getWidth();
-		height = tex.getHeight();
-		source = new Rectangle(0, 0, width, height);
-		hitbox = new Rectangle(0, 0, width, height);
-		pos = Vector2.Zero;
+		source = new Rectangle(sourceX, sourceY, sourceWidth, sourceHeight);
+		hitbox = new Rectangle(x, y, width, height);
+		pos = new Vector2(x, y);
 		origin = new Vector2(width/2, height/2);
 		rotation = 0f;
 		scale = 1f;
 		scaleX = 1f;
 		scaleY = 1f;
+		this.color = color;
 	}
 	
 	public Rectangle getSource(){
@@ -35,16 +39,21 @@ public class GameObject {
 	}
 	
 	public Vector2 getCenterPosition(){
-		Vector2 p = new Vector2(pos.x + origin.x, pos.y + origin.y);
-		return p;
+		return new Vector2(pos.x + origin.x, pos.y + origin.y);
 	}
 	
 	public void render(SpriteBatch batch){
+		batch.setColor(color);
+		System.out.println("");
+		batch.draw(tex, hitbox.x, hitbox.y, hitbox.width, hitbox.height);
 		batch.draw(tex, pos.x, pos.y, origin.x, origin.y, width, height, scale, scale, rotation, (int)source.x, (int)source.y, (int)source.width, (int)source.height, false, false);
+		batch.setColor(Color.WHITE);
 	}
 	
 	public void render2(SpriteBatch batch){
+		batch.setColor(color);
 		batch.draw(tex, pos.x, pos.y, origin.x, origin.y, width, height, scaleX, scaleY, rotation, (int)source.x, (int)source.y, (int)source.width, (int)source.height, false, false);
+		batch.setColor(Color.WHITE);
 	}
 	
 	public Vector2 getPos() {

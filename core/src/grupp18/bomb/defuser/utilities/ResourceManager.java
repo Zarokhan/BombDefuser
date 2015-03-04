@@ -15,7 +15,7 @@ public class ResourceManager {
 	public ResourceManager(){
 		
 		Pixmap p = new Pixmap(1, 1, Format.RGB565);
-		p.setColor(Color.BLACK);
+		p.setColor(Color.WHITE);
 		p.fill();
 		dot = new Texture(p);
 		

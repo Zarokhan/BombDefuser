@@ -18,7 +18,7 @@ public class MenyState extends State {
 
 	@Override
 	public void render(SpriteBatch batch) {
-		game.getRes().font.draw(batch, "Meny", 200, 200);
+		MyGame.getRes().font.draw(batch, "Meny", 200, 200);
 	}
 
 }

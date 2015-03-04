@@ -13,9 +13,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class MyGame extends ApplicationAdapter {
 	
 	public final static int WIDTH = 1280, HEIGHT = 720;
+	private static ResourceManager res;
 	
 	private SpriteBatch batch;
-	private ResourceManager res;
 	private StateManager states;
 	private OrthographicCamera camera;
 	
@@ -48,7 +48,7 @@ public class MyGame extends ApplicationAdapter {
 	 * GETTERS & SETTERS
 	 */
 	
-	public ResourceManager getRes() {
+	public static ResourceManager getRes() {
 		return res;
 	}
 }
