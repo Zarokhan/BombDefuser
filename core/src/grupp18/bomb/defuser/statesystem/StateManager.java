@@ -6,23 +6,22 @@ import grupp18.bomb.defuser.MyGame;
 import grupp18.bomb.defuser.allstates.GameState;
 import grupp18.bomb.defuser.allstates.MenyState;
 
-public class StateManager extends State {
+public class StateManager{
 	
 	private States currentState;
 	
-	// Alla states här
-	private GameState game1; // kan ej heta game, kolla State klassen
+	//Statemanager should not be a part of State.
+	//kan ej heta game, kolla State klassen --> Funkar nu, då vi inte ärver state!
+	private GameState game;
 	private MenyState meny;
 	
 	public StateManager(MyGame game) {
-		super(game);
-		game1 = new GameState(game);
-		meny = new MenyState(game);
+		this.game = new GameState(game);
+		this.meny = new MenyState(game);
 		
 		currentState = States.Game;
 	}
 
-	@Override
 	public void update(float delta) {
 		switch (currentState) {
 		case Meny:
@@ -31,12 +30,11 @@ public class StateManager extends State {
 		case WorldMap:
 			break;
 		case Game:
-			game1.update(delta);
+			game.update(delta);
 			break;
 		}
 	}
 
-	@Override
 	public void render(SpriteBatch batch) {
 		switch (currentState) {
 		case Meny:
@@ -45,7 +43,7 @@ public class StateManager extends State {
 		case WorldMap:
 			break;
 		case Game:
-			game1.render(batch);
+			game.render(batch);
 			break;
 		}
 	}
