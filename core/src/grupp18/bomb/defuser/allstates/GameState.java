@@ -14,19 +14,19 @@ public class GameState extends State {
 	
 	public GameState(MyGame game) {
 		super(game);
-		world = new World();
+		world = new World(-700);
 	}
 
 	@Override
 	public void update(float delta) {
 		pos.x += delta * 10;
-		world.Update(delta);
+		world.update(delta);
 	}
 
 	@Override
 	public void render(SpriteBatch batch) {
 		MyGame.getRes().font.draw(batch, "Prototype", 10, MyGame.HEIGHT - 10);
-		world.Render(batch);
+		world.render(batch);
 	}
 
 }

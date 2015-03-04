@@ -1,13 +1,10 @@
-package grupp18.bomb.defuser.Tiles;
+package grupp18.bomb.defuser.Entity;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-
-public interface ITile{
-
-	int getId();
+public interface IEntity {
 	
-	Boolean getIsCollision();
+	int getID();
 	
 	void update(float delta);
 	

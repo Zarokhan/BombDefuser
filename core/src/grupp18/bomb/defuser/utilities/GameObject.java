@@ -44,7 +44,6 @@ public class GameObject {
 	
 	public void render(SpriteBatch batch){
 		batch.setColor(color);
-		System.out.println("");
 		batch.draw(tex, hitbox.x, hitbox.y, hitbox.width, hitbox.height);
 		batch.draw(tex, pos.x, pos.y, origin.x, origin.y, width, height, scale, scale, rotation, (int)source.x, (int)source.y, (int)source.width, (int)source.height, false, false);
 		batch.setColor(Color.WHITE);
@@ -54,6 +53,10 @@ public class GameObject {
 		batch.setColor(color);
 		batch.draw(tex, pos.x, pos.y, origin.x, origin.y, width, height, scaleX, scaleY, rotation, (int)source.x, (int)source.y, (int)source.width, (int)source.height, false, false);
 		batch.setColor(Color.WHITE);
+	}
+	
+	public void update(float delta){
+		hitbox = new Rectangle(pos.x, pos.y, hitbox.width, hitbox.height);
 	}
 	
 	public Vector2 getPos() {

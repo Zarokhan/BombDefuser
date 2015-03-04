@@ -24,7 +24,7 @@ public class TileRec extends GameObject implements ITile{
 	}
 
 	@Override
-	public void Update(float delta) {
+	public void update(float delta) {
 		//Moving Platforms needs update etc...
 	}
 
