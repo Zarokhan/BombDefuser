@@ -7,7 +7,6 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MyGame extends ApplicationAdapter {
@@ -17,7 +16,6 @@ public class MyGame extends ApplicationAdapter {
 	
 	private SpriteBatch batch;
 	private StateManager states;
-	private OrthographicCamera camera;
 	
 	@Override
 	public void create () {
@@ -49,7 +47,7 @@ public class MyGame extends ApplicationAdapter {
 		
 		batch.begin();
 		states.render(batch);
-		MyGame.res.font.draw(batch, "Prototype [WASD to move]", 10, MyGame.HEIGHT - 10);
+		MyGame.res.font.draw(batch, "Prototype", 10, MyGame.HEIGHT - 10);
 		batch.end();
 	}
 	
