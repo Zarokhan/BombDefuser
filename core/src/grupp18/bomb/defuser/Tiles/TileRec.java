@@ -5,6 +5,7 @@ import grupp18.bomb.defuser.utilities.GameObject;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 
 public class TileRec extends GameObject implements ITile{
 
@@ -31,6 +32,11 @@ public class TileRec extends GameObject implements ITile{
 	@Override
 	public void render(SpriteBatch batch) {
 		super.render(batch);
+	}
+
+	@Override
+	public Rectangle getHitBox() {
+		return super.getHitbox();
 	}
 
 }

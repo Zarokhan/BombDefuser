@@ -49,7 +49,7 @@ public class MyGame extends ApplicationAdapter {
 		
 		batch.begin();
 		states.render(batch);
-		MyGame.res.font.draw(batch, "Prototype", 10, MyGame.HEIGHT - 10);
+		MyGame.res.font.draw(batch, "Prototype [WASD to move]", 10, MyGame.HEIGHT - 10);
 		batch.end();
 	}
 	

@@ -58,7 +58,7 @@ public class GameObject {
 		batch.setColor(Color.WHITE);
 	}
 	
-	public void update(float delta){
+	public void updateHitBox(){
 		hitbox = new Rectangle(pos.x, pos.y, hitbox.width, hitbox.height);
 	}
 	

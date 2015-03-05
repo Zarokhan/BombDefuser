@@ -3,23 +3,24 @@ package grupp18.bomb.defuser.allstates;
 import grupp18.bomb.defuser.MyGame;
 import grupp18.bomb.defuser.World.World;
 import grupp18.bomb.defuser.statesystem.State;
+import grupp18.bomb.defuser.utilities.Controller;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 
 public class GameState extends State {
 	
-	private Vector2 pos = Vector2.Zero;
 	private World world;
+	private Controller control;
 	
 	public GameState(MyGame game) {
 		super(game);
-		world = new World(-700);
+		world = new World(-30);
+		control = new Controller(world.getHero());
 	}
 
 	@Override
 	public void update(float delta) {
-		pos.x += delta * 10;
+		control.update();
 		world.update(delta);
 	}
 
