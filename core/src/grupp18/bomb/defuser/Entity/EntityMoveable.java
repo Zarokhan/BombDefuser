@@ -14,20 +14,25 @@ import grupp18.bomb.defuser.utilities.GameObject;
 public class EntityMoveable extends GameObject implements IEntity{
 
 	//Apply velocity varje frame
-	private Vector2 velocity, forces;
+	private Vector2 velocity, forces, spawn;
 	private float speed;
 	private World world;
 	private Boolean isOnGround;
 	
 	public EntityMoveable(Texture tex, float sourceX, float sourceY, float sourceWidth, float sourceHeight, float x, float y, float width, float height, Color color, World world, float speed) {
 		super(tex, sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height, color);
+		this.spawn = new Vector2(x, y);
 		this.world = world;
 		this.speed = speed;
 		this.velocity = Vector2.Zero;
 		this.forces = Vector2.Zero;
 		this.isOnGround = false;
 	}
-
+	
+	public void reset(){
+		pos = new Vector2(spawn.x, spawn.y);
+	}
+	
 	@Override
 	public int getID() {
 		return 0;

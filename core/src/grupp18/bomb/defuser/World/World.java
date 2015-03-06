@@ -5,14 +5,18 @@ import grupp18.bomb.defuser.Entity.EntityMoveable;
 import grupp18.bomb.defuser.Entity.IEntity;
 import grupp18.bomb.defuser.Tiles.ITile;
 import grupp18.bomb.defuser.Tiles.TileRec;
+import grupp18.bomb.defuser.bomb.Bomb;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 
 public class World {
 	
@@ -22,7 +26,9 @@ public class World {
 	
 	private float gravity;
 	
-	EntityMoveable hero;
+	private EntityMoveable hero;
+	private Bomb bomb;
+	
 	//I Construktorn skall man skicka in den fil/map man vill ladda, men i prototypen har vi inte detta.
 	//Därför skapar jag en statisk värld i konstruktorn
 	public World(float gravity)
@@ -34,6 +40,7 @@ public class World {
 		topLayer = new ArrayList<ITile>();
 		
 		hero = new EntityMoveable(MyGame.res.dot, 0, 0, 1, 1, 0, 600, 55, 70, Color.MAROON, this, 300);
+		bomb = new Bomb(new Vector2(500 + 650, 100 + 50), 10, 2);
 		
 		lowerLayer.add(new TileRec(MyGame.res.dot, 200, 100, 200, 300, Color.LIGHT_GRAY));
 		lowerLayer.add(new TileRec(MyGame.res.dot, 800, 100, 300, 150, Color.LIGHT_GRAY));
@@ -52,6 +59,18 @@ public class World {
 	public void update(float delta)
 	{
 		hero.update(delta);
+		// Returns true when the bomb explodes
+		if(bomb.update(delta)){
+			hero.reset();
+			bomb.reset();
+		}
+		
+		// Defuse module
+		if(hero.getHitBox().overlaps(bomb.getHitbox())){
+			if(Gdx.input.isKeyPressed(Keys.SPACE))
+				bomb.defuse(delta);
+		}
+			
 		for(ITile tile : collsionLayer)
 			tile.update(delta);
 	}
@@ -65,6 +84,8 @@ public class World {
 			tile.render(batch);
 		for(ITile tile : topLayer)
 			tile.render(batch);
+		bomb.render(batch);
+		MyGame.res.font.draw(batch, "Hurry up!!! You only got " + (int)bomb.getTimeLeft() + " time left!", 20, 300);
 	}
 	
 	public ITile CollisionEntityTile(IEntity entity)
