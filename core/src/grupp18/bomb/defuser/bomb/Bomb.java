@@ -23,6 +23,7 @@ public class Bomb extends GameObject implements IBomb{
 		this.hitbox = new Rectangle(pos.x, pos.y, 50, 50);
 	}
 	
+	@Override
 	public boolean defuse(float delta){
 		if(getTimeLeft() > 0){
 			defuseTimer += delta;
@@ -36,6 +37,7 @@ public class Bomb extends GameObject implements IBomb{
 		return true;
 	}
 	
+	@Override
 	public void reset(){
 		explodeTimer = 0;
 		defuseTimer = 0;
@@ -65,6 +67,7 @@ public class Bomb extends GameObject implements IBomb{
 		MyGame.res.font.draw(batch, "Hold space to defuse the bomb.", pos.x - 50, pos.y - 100);
 	}
 	
+	@Override
 	public float getTimeLeft(){
 		return explodeTime - explodeTimer;
 	}
