@@ -1,6 +1,7 @@
 package grupp18.bomb.defuser.World;
 
 import grupp18.bomb.defuser.MyGame;
+import grupp18.bomb.defuser.Entity.Enemy;
 import grupp18.bomb.defuser.Entity.EntityMoveable;
 import grupp18.bomb.defuser.Entity.IEntity;
 import grupp18.bomb.defuser.Tiles.ITile;
@@ -20,6 +21,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class World {
 	
+	protected List<Enemy> enemies;
 	protected List<ITile> topLayer;
 	protected List<ITile> collsionLayer;
 	protected List<ITile> lowerLayer;
@@ -39,6 +41,7 @@ public class World {
 		collsionLayer = new ArrayList<ITile>();
 		topLayer = new ArrayList<ITile>();
 		
+		enemies = new ArrayList<Enemy>();
 		hero = new EntityMoveable(MyGame.res.dot, 0, 0, 1, 1, 0, 600, 55, 70, Color.MAROON, this, 300);
 		bomb = new Bomb(new Vector2(500 + 650, 100 + 50), 10, 2);
 		
@@ -56,36 +59,57 @@ public class World {
 
 	}
 	
+	public void addAI(Enemy enemy){
+		enemies.add(enemy);
+	}
+	
+	public void setBomb(Bomb bomb){
+		this.bomb = bomb;
+	}
+	
 	public void update(float delta)
 	{
-		hero.update(delta);
-		// Returns true when the bomb explodes
-		if(bomb.update(delta)){
-			hero.reset();
-			bomb.reset();
-		}
+		for(Enemy i : enemies)
+			i.update(delta);
 		
-		// Defuse module
-		if(hero.getHitBox().overlaps(bomb.getHitbox())){
-			if(Gdx.input.isKeyPressed(Keys.SPACE))
-				bomb.defuse(delta);
-		}
-			
+		hero.update(delta);
+		updateBomb(delta);
+		
 		for(ITile tile : collsionLayer)
 			tile.update(delta);
+	}
+	
+	public void updateBomb(float delta){
+		if(bomb != null){
+			// Returns true when the bomb explodes
+			if(bomb.update(delta)){
+				hero.reset();
+				bomb.reset();
+			}
+			
+			// Defuse module
+			if(hero.getHitBox().overlaps(bomb.getHitbox())){
+				if(Gdx.input.isKeyPressed(Keys.SPACE))
+					bomb.defuse(delta);
+			}
+		}
 	}
 	
 	public void render(SpriteBatch batch)
 	{
 		for(ITile tile : lowerLayer)
 			tile.render(batch);
+		for(Enemy i : enemies)
+			i.render(batch);
 		hero.render(batch);
 		for(ITile tile : collsionLayer)
 			tile.render(batch);
 		for(ITile tile : topLayer)
 			tile.render(batch);
-		bomb.render(batch);
-		MyGame.res.font.draw(batch, "Hurry up!!! You only got " + (int)bomb.getTimeLeft() + " time left!", 20, 300);
+		if(bomb != null){
+			bomb.render(batch);
+			MyGame.res.font.draw(batch, "Hurry up!!! You only got " + (int)bomb.getTimeLeft() + " time left!", 20, 300);
+		}
 	}
 	
 	public ITile CollisionEntityTile(IEntity entity)

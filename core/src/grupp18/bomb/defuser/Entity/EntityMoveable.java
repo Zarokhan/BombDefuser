@@ -14,10 +14,10 @@ import grupp18.bomb.defuser.utilities.GameObject;
 public class EntityMoveable extends GameObject implements IEntity{
 
 	//Apply velocity varje frame
-	private Vector2 velocity, forces, spawn;
-	private float speed;
-	private World world;
-	private Boolean isOnGround;
+	protected Vector2 velocity, forces, spawn;
+	protected float speed;
+	protected World world;
+	protected Boolean isOnGround;
 	
 	public EntityMoveable(Texture tex, float sourceX, float sourceY, float sourceWidth, float sourceHeight, float x, float y, float width, float height, Color color, World world, float speed) {
 		super(tex, sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height, color);
@@ -44,7 +44,7 @@ public class EntityMoveable extends GameObject implements IEntity{
 		moveVertical(delta);
 	}
 	
-	private void moveVertical(float delta){
+	protected void moveVertical(float delta){
 		velocity.y += world.getGravity();
 		pos.y += velocity.y * delta;
 		super.updateHitBox();
@@ -66,7 +66,7 @@ public class EntityMoveable extends GameObject implements IEntity{
 			isOnGround = false;
 	}
 	
-	private void moveHorizontal(float delta){
+	protected void moveHorizontal(float delta){
 		pos.x += velocity.x * delta;
 		super.updateHitBox();
 		ITile tile = world.CollisionEntityTile(this);
@@ -88,7 +88,7 @@ public class EntityMoveable extends GameObject implements IEntity{
 	}
 	public void moveStop(){
 		velocity.x = 0;
-}
+	}
 	
 	@Override
 	public void render(SpriteBatch batch) {
