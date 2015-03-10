@@ -5,5 +5,6 @@ package grupp18.bomb.defuser.statesystem;
 public enum States {
 	Meny, 
 	WorldMap, 
-	Game
+	Game,
+	AItest
 }

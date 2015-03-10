@@ -27,7 +27,7 @@ public class MenyState extends State {
 	@Override
 	public void update(float delta) {
 		if(btnPlay.update())
-			game.getStateManager().setState(States.Game);
+			game.getStateManager().setState(States.WorldMap);
 	}
 
 	@Override
