@@ -40,6 +40,7 @@ public class Button extends GameObject {
 		// Is clicked?
 		if(Gdx.input.isTouched()){
 			if(hover && !clicked){
+				MyGame.res.select.play();
 				clicked = true;
 				return true;
 			}

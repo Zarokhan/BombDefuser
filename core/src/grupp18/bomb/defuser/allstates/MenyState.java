@@ -32,6 +32,7 @@ public class MenyState extends State {
 
 	@Override
 	public void render(SpriteBatch batch) {
+		batch.draw(MyGame.res.character, 0, 0);
 		logo.render(batch);
 		btnPlay.render(batch);
 	}
