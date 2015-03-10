@@ -4,6 +4,8 @@ import grupp18.bomb.defuser.MyGame;
 import grupp18.bomb.defuser.Entity.Enemy;
 import grupp18.bomb.defuser.Entity.EntityMoveable;
 import grupp18.bomb.defuser.Entity.IEntity;
+import grupp18.bomb.defuser.Fan.EDirections;
+import grupp18.bomb.defuser.Fan.Fan;
 import grupp18.bomb.defuser.Tiles.ITile;
 import grupp18.bomb.defuser.Tiles.TileRec;
 import grupp18.bomb.defuser.bomb.Bomb;
@@ -23,7 +25,7 @@ public class World {
 	
 	protected List<Enemy> enemies;
 	protected List<ITile> topLayer;
-	protected List<ITile> collsionLayer;
+	protected List<ITile> collisionLayer;
 	protected List<ITile> lowerLayer;
 	
 	private float gravity;
@@ -38,7 +40,7 @@ public class World {
 		this.gravity = gravity;
 		
 		lowerLayer = new ArrayList<ITile>();
-		collsionLayer = new ArrayList<ITile>();
+		collisionLayer = new ArrayList<ITile>();
 		topLayer = new ArrayList<ITile>();
 		
 		enemies = new ArrayList<Enemy>();
@@ -48,11 +50,12 @@ public class World {
 		lowerLayer.add(new TileRec(MyGame.res.dot, 200, 100, 200, 300, Color.LIGHT_GRAY));
 		lowerLayer.add(new TileRec(MyGame.res.dot, 800, 100, 300, 150, Color.LIGHT_GRAY));
 		
-		collsionLayer.add(new TileRec(MyGame.res.dot, 0, 100, 400, 50, Color.DARK_GRAY));
-		collsionLayer.add(new TileRec(MyGame.res.dot, 500, 100, 700, 50, Color.DARK_GRAY));
-		collsionLayer.add(new TileRec(MyGame.res.dot, 600, 100, 50, 200, Color.DARK_GRAY));
-		collsionLayer.add(new TileRec(MyGame.res.dot, 800, 250, 300, 50, Color.DARK_GRAY));	
-		collsionLayer.add(new TileRec(MyGame.res.dot, 200, 400, 200, 50, Color.DARK_GRAY));
+		collisionLayer.add(new TileRec(MyGame.res.dot, 0, 100, 400, 50, Color.DARK_GRAY));
+		collisionLayer.add(new TileRec(MyGame.res.dot, 500, 100, 700, 50, Color.DARK_GRAY));
+		collisionLayer.add(new TileRec(MyGame.res.dot, 600, 100, 50, 200, Color.DARK_GRAY));
+		collisionLayer.add(new TileRec(MyGame.res.dot, 800, 250, 300, 50, Color.DARK_GRAY));	
+		collisionLayer.add(new TileRec(MyGame.res.dot, 200, 400, 200, 50, Color.DARK_GRAY));
+		collisionLayer.add(new Fan(1200, 100, 200, 50, 2f, 300, 500f, EDirections.Up));
 		
 		topLayer.add(new TileRec(MyGame.res.dot, 800, 150, 10, 100, Color.ORANGE));
 		topLayer.add(new TileRec(MyGame.res.dot, 1090, 150, 10, 100, Color.ORANGE));
@@ -75,7 +78,7 @@ public class World {
 		hero.update(delta);
 		updateBomb(delta);
 		
-		for(ITile tile : collsionLayer)
+		for(ITile tile : collisionLayer)
 			tile.update(delta);
 	}
 	
@@ -102,7 +105,7 @@ public class World {
 		for(Enemy i : enemies)
 			i.render(batch);
 		hero.render(batch);
-		for(ITile tile : collsionLayer)
+		for(ITile tile : collisionLayer)
 			tile.render(batch);
 		for(ITile tile : topLayer)
 			tile.render(batch);
@@ -114,7 +117,7 @@ public class World {
 	
 	public ITile CollisionEntityTile(IEntity entity)
 	{
-		for(ITile tile : collsionLayer)
+		for(ITile tile : collisionLayer)
 		{
 			Rectangle tempRec = new Rectangle();
 			if(Intersector.intersectRectangles(entity.getHitBox(), tile.getHitBox(), tempRec))

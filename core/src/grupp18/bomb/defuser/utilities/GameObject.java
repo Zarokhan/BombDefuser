@@ -134,4 +134,9 @@ public class GameObject {
 		this.scaleY = scaleY;
 	}
 	
+	public void setColor(Color color)
+	{
+		this.color = color;
+	}
+	
 }
