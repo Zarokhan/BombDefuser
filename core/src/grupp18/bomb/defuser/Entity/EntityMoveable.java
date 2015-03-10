@@ -1,15 +1,14 @@
 package grupp18.bomb.defuser.Entity;
 
+import grupp18.bomb.defuser.Tiles.ITile;
+import grupp18.bomb.defuser.World.World;
+import grupp18.bomb.defuser.utilities.GameObject;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-
-import grupp18.bomb.defuser.MyGame;
-import grupp18.bomb.defuser.Tiles.ITile;
-import grupp18.bomb.defuser.World.World;
-import grupp18.bomb.defuser.utilities.GameObject;
 
 public class EntityMoveable extends GameObject implements IEntity{
 
@@ -25,7 +24,7 @@ public class EntityMoveable extends GameObject implements IEntity{
 		this.world = world;
 		this.speed = speed;
 		this.velocity = Vector2.Zero;
-		this.forces = Vector2.Zero;
+		this.forces = new Vector2();
 		this.isOnGround = false;
 	}
 	
@@ -42,11 +41,12 @@ public class EntityMoveable extends GameObject implements IEntity{
 	public void update(float delta) {
 		moveHorizontal(delta);
 		moveVertical(delta);
+		forces = new Vector2(0, 0);
 	}
 	
 	protected void moveVertical(float delta){
 		velocity.y += world.getGravity();
-		pos.y += velocity.y * delta;
+		pos.y += (velocity.y + forces.y) * delta;
 		super.updateHitBox();
 		ITile tile = world.CollisionEntityTile(this);
 		if(tile != null)
@@ -67,7 +67,7 @@ public class EntityMoveable extends GameObject implements IEntity{
 	}
 	
 	protected void moveHorizontal(float delta){
-		pos.x += velocity.x * delta;
+		pos.x += (velocity.x + forces.x) * delta;
 		super.updateHitBox();
 		ITile tile = world.CollisionEntityTile(this);
 		if(tile != null)
@@ -81,10 +81,10 @@ public class EntityMoveable extends GameObject implements IEntity{
 		}
 	}
 	public void moveRight(){
-			velocity.x = speed;
+		velocity.x = speed;
 	}
 	public void moveLeft(){
-			velocity.x = -speed;
+		velocity.x = -speed;
 	}
 	public void moveStop(){
 		velocity.x = 0;
@@ -101,6 +101,10 @@ public class EntityMoveable extends GameObject implements IEntity{
 	public void applyVelocity(float x, float y){
 		velocity.x += x;
 		velocity.y += y;
+	}
+	public void applyForce(float x, float y){
+		forces.x += x;
+		forces.y += y;
 	}
 
 	@Override

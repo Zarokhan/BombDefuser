@@ -43,7 +43,7 @@ public class World {
 		
 		enemies = new ArrayList<Enemy>();
 		hero = new EntityMoveable(MyGame.res.dot, 0, 0, 1, 1, 0, 600, 55, 70, Color.MAROON, this, 300);
-		bomb = new Bomb(new Vector2(500 + 650, 100 + 50), 10, 2);
+		bomb = new Bomb(new Vector2(500 + 650, 100 + 50), 100, 2);
 		
 		lowerLayer.add(new TileRec(MyGame.res.dot, 200, 100, 200, 300, Color.LIGHT_GRAY));
 		lowerLayer.add(new TileRec(MyGame.res.dot, 800, 100, 300, 150, Color.LIGHT_GRAY));
