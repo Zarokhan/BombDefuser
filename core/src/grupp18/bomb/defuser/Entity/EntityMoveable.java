@@ -39,14 +39,17 @@ public class EntityMoveable extends GameObject implements IEntity{
 
 	@Override
 	public void update(float delta) {
+		velocity.x += forces.x;
+		velocity.y += forces.y;
 		moveHorizontal(delta);
 		moveVertical(delta);
+		//System.out.println(velocity + " - " + forces);
 		forces = new Vector2(0, 0);
 	}
 	
 	protected void moveVertical(float delta){
 		velocity.y += world.getGravity();
-		pos.y += (velocity.y + forces.y) * delta;
+		pos.y += (velocity.y) * delta;
 		super.updateHitBox();
 		ITile tile = world.CollisionEntityTile(this);
 		if(tile != null)
@@ -67,7 +70,7 @@ public class EntityMoveable extends GameObject implements IEntity{
 	}
 	
 	protected void moveHorizontal(float delta){
-		pos.x += (velocity.x + forces.x) * delta;
+		pos.x += (velocity.x) * delta;
 		super.updateHitBox();
 		ITile tile = world.CollisionEntityTile(this);
 		if(tile != null)

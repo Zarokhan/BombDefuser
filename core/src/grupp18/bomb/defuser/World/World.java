@@ -6,6 +6,7 @@ import grupp18.bomb.defuser.Entity.EntityMoveable;
 import grupp18.bomb.defuser.Entity.IEntity;
 import grupp18.bomb.defuser.Fan.EDirections;
 import grupp18.bomb.defuser.Fan.Fan;
+import grupp18.bomb.defuser.Fan.FanHandler;
 import grupp18.bomb.defuser.Tiles.ITile;
 import grupp18.bomb.defuser.Tiles.TileRec;
 import grupp18.bomb.defuser.bomb.Bomb;
@@ -55,7 +56,8 @@ public class World {
 		collisionLayer.add(new TileRec(MyGame.res.dot, 600, 100, 50, 200, Color.DARK_GRAY));
 		collisionLayer.add(new TileRec(MyGame.res.dot, 800, 250, 300, 50, Color.DARK_GRAY));	
 		collisionLayer.add(new TileRec(MyGame.res.dot, 200, 400, 200, 50, Color.DARK_GRAY));
-		collisionLayer.add(new Fan(1200, 100, 200, 50, 2f, 300, 500f, EDirections.Up));
+		
+		FanHandler.addFan(new Fan(1200, 100, 200, 50, 5f, 300, 30f, EDirections.Up), this);
 		
 		topLayer.add(new TileRec(MyGame.res.dot, 800, 150, 10, 100, Color.ORANGE));
 		topLayer.add(new TileRec(MyGame.res.dot, 1090, 150, 10, 100, Color.ORANGE));
@@ -75,6 +77,7 @@ public class World {
 		for(Enemy i : enemies)
 			i.update(delta);
 		
+		FanHandler.updateForces(hero);
 		hero.update(delta);
 		updateBomb(delta);
 		
@@ -132,6 +135,10 @@ public class World {
 	
 	public EntityMoveable getHero(){
 		return hero;
+	}
+	
+	public List<ITile> getCollisionLayer(){
+		return collisionLayer;
 	}
 
 }
