@@ -13,4 +13,19 @@ public class Enemy extends EntityMoveable {
 				color, world, speed);
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Override
+	public void update(float delta) {
+		super.update(delta);
+	}
+	
+	@Override
+	public void moveLeft() {
+
+	}
+	
+	@Override
+	public void moveRight() {
+		
+	}
 }

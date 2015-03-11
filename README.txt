@@ -1,5 +1,8 @@
 Bomb Defuser
 
+OBS!!!
+NEVER USE Vector2.Zero
+
 To do list
 1. AI
 2. Fläktar

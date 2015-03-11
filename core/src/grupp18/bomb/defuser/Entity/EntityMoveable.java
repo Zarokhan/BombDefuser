@@ -23,7 +23,7 @@ public class EntityMoveable extends GameObject implements IEntity{
 		this.spawn = new Vector2(x, y);
 		this.world = world;
 		this.speed = speed;
-		this.velocity = Vector2.Zero;
+		this.velocity = new Vector2(0, 0);
 		this.forces = new Vector2();
 		this.isOnGround = false;
 	}
