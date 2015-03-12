@@ -12,24 +12,26 @@ import grupp18.bomb.defuser.World.World;
 
 public class FanHandler {
 
-	private static List<Fan> fans = new ArrayList<Fan>();
+	private List<Fan> fans = new ArrayList<Fan>();
 	
-	public static void addFan(Fan fan, World world)
+	public void addFan(Fan fan, World world)
 	{
 		world.getCollisionLayer().add(fan);
 		fans.add(fan);
+		System.out.println("asdasdasdasd");
 	}
-	public static void updateForces(EntityMoveable hero)
+	public void updateForces(EntityMoveable hero)
 	{
 		for (Fan fan : fans) {
-			if(!fan.isActivated())
-				continue;
-			Rectangle recTemp = new Rectangle();
-			if(Intersector.intersectRectangles(fan.getFanRec(), hero.getHitBox(), recTemp))
+			if(fan.isActivated())
 			{
-				Vector2 force = fan.getForceOnPoint(hero.getCenterPosition());
-				hero.applyForce(force.x, force.y);
-				//System.out.println(force);
+				Rectangle recTemp = new Rectangle();
+				if(Intersector.intersectRectangles(fan.getFanRec(), hero.getHitBox(), recTemp))
+				{
+					Vector2 force = fan.getForceOnPoint(hero.getCenterPosition());
+					hero.applyForce(force.x, force.y);
+					
+				}
 			}
 		}
 	}

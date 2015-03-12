@@ -40,11 +40,15 @@ public class Fan extends TileRec{
 			if(timeCounter > time)
 			{
 				timeCounter = 0;
-				activated = (activated) ? false : true;
-				if(activated)
-					setColor(colorOn);
-				else
+				if(activated){
+					activated = false;
 					setColor(colorOff);
+				}
+				else
+				{
+					activated = true;				
+					setColor(colorOn);
+				}				
 			}
 		}
 	}
@@ -71,9 +75,8 @@ public class Fan extends TileRec{
 	}
 	
 	public Vector2 getForceOnPoint(Vector2 vector){
-		//System.out.println(((vector.y - fanRec.y) / fanRec.height));
 		switch (direction) {
-		case Up: return new Vector2(0, (1 - ((vector.y - 60 - fanRec.y) / fanRec.height)) * force);
+		case Up: return new Vector2(0, (1 - ((vector.y - 35 - fanRec.y) / fanRec.height)) * force);
 		case Down: return new Vector2(0, (fanRec.height / (fanRec.y + fanRec.height - vector.y)) * force * -1);
 		case Left: return new Vector2((fanRec.width / (fanRec.x + fanRec.x - vector.x)) * force * -1, 0);
 		case Right: return new Vector2((fanRec.width / (vector.x - fanRec.x)) * force, 0);
@@ -94,7 +97,7 @@ public class Fan extends TileRec{
 	}
 	
 	public boolean isActivated(){
-		return activated;
+		return this.activated;
 	}
 
 }

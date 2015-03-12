@@ -30,6 +30,7 @@ public class World {
 	protected List<ITile> lowerLayer;
 	
 	private float gravity;
+	private FanHandler fanHandler;
 	
 	private EntityMoveable hero;
 	private Bomb bomb;
@@ -39,6 +40,7 @@ public class World {
 	public World(float gravity)
 	{
 		this.gravity = gravity;
+		fanHandler = new FanHandler();
 		
 		lowerLayer = new ArrayList<ITile>();
 		collisionLayer = new ArrayList<ITile>();
@@ -57,7 +59,10 @@ public class World {
 		collisionLayer.add(new TileRec(MyGame.res.dot, 800, 250, 300, 50, Color.DARK_GRAY));	
 		collisionLayer.add(new TileRec(MyGame.res.dot, 200, 400, 200, 50, Color.DARK_GRAY));
 		
-		FanHandler.addFan(new Fan(1200, 100, 200, 50, 5f, 300, 30f, EDirections.Up), this);
+		collisionLayer.add(new TileRec(MyGame.res.dot, 1400, 100, 50, 500, Color.DARK_GRAY));
+		//collisionLayer.add(new TileRec(MyGame.res.dot, 200, 400, 200, 50, Color.DARK_GRAY));
+		
+		fanHandler.addFan(new Fan(1200, 100, 200, 50, 5f, 300, 60f, EDirections.Up), this);
 		
 		topLayer.add(new TileRec(MyGame.res.dot, 800, 150, 10, 100, Color.ORANGE));
 		topLayer.add(new TileRec(MyGame.res.dot, 1090, 150, 10, 100, Color.ORANGE));
@@ -77,7 +82,7 @@ public class World {
 		for(Enemy i : enemies)
 			i.update(delta);
 		
-		FanHandler.updateForces(hero);
+		fanHandler.updateForces(hero);
 		hero.update(delta);
 		updateBomb(delta);
 		
