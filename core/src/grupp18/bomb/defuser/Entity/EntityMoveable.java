@@ -118,4 +118,10 @@ public class EntityMoveable extends GameObject implements IEntity{
 	public boolean isOnGround(){
 		return isOnGround;
 	}
+	public float getSpeed(){
+		return speed;
+	}
+	public void setSpeed(float newSpeed){
+		this.speed = newSpeed;
+	}
 }
