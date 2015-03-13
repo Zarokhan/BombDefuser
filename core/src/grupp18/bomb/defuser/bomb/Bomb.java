@@ -77,4 +77,10 @@ public class Bomb extends GameObject implements IBomb{
 		return super.getHitbox();
 	}
 
+	public float getExplodeTime(){
+		return explodeTime;
+	}
+	public void setExplodeTime(float explodTime){
+		this.explodeTime = explodTime;
+	}
 }

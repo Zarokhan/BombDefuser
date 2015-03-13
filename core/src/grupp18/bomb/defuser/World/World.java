@@ -7,7 +7,7 @@ import grupp18.bomb.defuser.Entity.IEntity;
 import grupp18.bomb.defuser.Fan.EDirections;
 import grupp18.bomb.defuser.Fan.Fan;
 import grupp18.bomb.defuser.Fan.FanHandler;
-import grupp18.bomb.defuser.PowerUp.PowerUp;
+import grupp18.bomb.defuser.PowerUp.PowerUpManger;
 import grupp18.bomb.defuser.Tiles.ITile;
 import grupp18.bomb.defuser.Tiles.TileRec;
 import grupp18.bomb.defuser.bomb.Bomb;
@@ -33,10 +33,10 @@ public class World {
 	private float gravity;
 	private FanHandler fanHandler;
 	
+	private PowerUpManger powerUpManger;
+	
 	private EntityMoveable hero;
 	private Bomb bomb;
-	
-	private List<PowerUp> powerUps;
 	
 	//I Construktorn skall man skicka in den fil/map man vill ladda, men i prototypen har vi inte detta.
 	//Därför skapar jag en statisk värld i konstruktorn
@@ -69,9 +69,8 @@ public class World {
 		
 		topLayer.add(new TileRec(MyGame.res.dot, 800, 150, 10, 100, Color.ORANGE));
 		topLayer.add(new TileRec(MyGame.res.dot, 1090, 150, 10, 100, Color.ORANGE));
-		
-		powerUps = new ArrayList<PowerUp>();
-		powerUps.add(new PowerUp(this,450,300,300,0, 5));
+
+		powerUpManger = new PowerUpManger(this,bomb);
 	}
 	
 	public void addAI(Enemy enemy){
@@ -89,8 +88,7 @@ public class World {
 		
 		fanHandler.updateForces(hero);
 		hero.update(delta);
-		for(PowerUp p : powerUps)
-			p.update(delta);
+		powerUpManger.update(delta);
 		updateBomb(delta);
 		
 		for(ITile tile : collisionLayer)
@@ -120,8 +118,7 @@ public class World {
 		for(Enemy i : enemies)
 			i.render(batch);
 		hero.render(batch);
-		for(PowerUp p : powerUps)
-			p.render(batch);
+		powerUpManger.render(batch);
 		for(ITile tile : collisionLayer)
 			tile.render(batch);
 		for(ITile tile : topLayer)
