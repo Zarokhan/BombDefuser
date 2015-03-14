@@ -1,14 +1,14 @@
-package grupp18.bomb.defuser.allstates;
+package grupp18.bomb.defuser.AllStates;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 import grupp18.bomb.defuser.MyGame;
-import grupp18.bomb.defuser.statesystem.State;
-import grupp18.bomb.defuser.statesystem.States;
-import grupp18.bomb.defuser.utilities.Button;
-import grupp18.bomb.defuser.utilities.GameObject;
+import grupp18.bomb.defuser.StateSystem.State;
+import grupp18.bomb.defuser.StateSystem.EStates;
+import grupp18.bomb.defuser.Utilities.Button;
+import grupp18.bomb.defuser.Utilities.GameObject;
 
 public class MenyState extends State {
 
@@ -34,7 +34,7 @@ public class MenyState extends State {
 	@Override
 	public void update(float delta) {
 		if(btnPlay.update())
-			game.getStateManager().setState(States.WorldMap);
+			game.getStateManager().setState(EStates.WorldMap);
 	}
 
 	@Override

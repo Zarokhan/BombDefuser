@@ -1,4 +1,4 @@
-package grupp18.bomb.defuser.bomb;
+package grupp18.bomb.defuser.Bomb;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;

@@ -1,4 +1,4 @@
-package grupp18.bomb.defuser.allstates;
+package grupp18.bomb.defuser.AllStates;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -7,10 +7,10 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
 import grupp18.bomb.defuser.MyGame;
-import grupp18.bomb.defuser.Entity.Enemy;
+import grupp18.bomb.defuser.Enemy.Enemy;
+import grupp18.bomb.defuser.StateSystem.State;
+import grupp18.bomb.defuser.Utilities.Controller;
 import grupp18.bomb.defuser.World.World;
-import grupp18.bomb.defuser.statesystem.State;
-import grupp18.bomb.defuser.utilities.Controller;
 
 public class AItestState extends State {
 	
@@ -24,7 +24,7 @@ public class AItestState extends State {
 		
 		world = new World(-30);
 		world.setBomb(null);
-		world.addAI(new Enemy(new Vector2(0, 400), Color.NAVY, world, 30));
+		world.addEnemy(MyGame.res.dot, 50, 50, 0, 500, 30, Color.BLUE);
 		
 		control = new Controller(world.getHero());
 		camera = new OrthographicCamera(MyGame.WIDTH, MyGame.HEIGHT);

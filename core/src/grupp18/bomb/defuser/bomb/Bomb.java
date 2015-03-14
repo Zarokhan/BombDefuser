@@ -1,7 +1,7 @@
-package grupp18.bomb.defuser.bomb;
+package grupp18.bomb.defuser.Bomb;
 
 import grupp18.bomb.defuser.MyGame;
-import grupp18.bomb.defuser.utilities.GameObject;
+import grupp18.bomb.defuser.Utilities.GameObject;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

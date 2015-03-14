@@ -1,16 +1,16 @@
-package grupp18.bomb.defuser.statesystem;
+package grupp18.bomb.defuser.StateSystem;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import grupp18.bomb.defuser.MyGame;
-import grupp18.bomb.defuser.allstates.AItestState;
-import grupp18.bomb.defuser.allstates.GameState;
-import grupp18.bomb.defuser.allstates.LevelState;
-import grupp18.bomb.defuser.allstates.MenyState;
+import grupp18.bomb.defuser.AllStates.AItestState;
+import grupp18.bomb.defuser.AllStates.GameState;
+import grupp18.bomb.defuser.AllStates.LevelState;
+import grupp18.bomb.defuser.AllStates.MenyState;
 
 public class StateManager{
 	
-	private States currentState;
+	private EStates currentState;
 	
 	//Statemanager should not be a part of State.
 	//kan ej heta game, kolla State klassen --> Funkar nu, då vi inte ärver state!
@@ -25,10 +25,10 @@ public class StateManager{
 		this.levels = new LevelState(game);
 		this.AItest = new AItestState(game);
 		
-		currentState = States.Meny;
+		currentState = EStates.Meny;
 	}
 	
-	public void setState(States state){
+	public void setState(EStates state){
 		currentState = state;
 	}
 	

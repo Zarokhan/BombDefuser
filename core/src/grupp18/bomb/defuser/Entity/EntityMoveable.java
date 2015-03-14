@@ -1,8 +1,8 @@
 package grupp18.bomb.defuser.Entity;
 
 import grupp18.bomb.defuser.Tiles.ITile;
+import grupp18.bomb.defuser.Utilities.GameObject;
 import grupp18.bomb.defuser.World.World;
-import grupp18.bomb.defuser.utilities.GameObject;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;

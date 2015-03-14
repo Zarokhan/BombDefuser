@@ -1,7 +1,8 @@
 package grupp18.bomb.defuser.World;
 
 import grupp18.bomb.defuser.MyGame;
-import grupp18.bomb.defuser.Entity.Enemy;
+import grupp18.bomb.defuser.Bomb.Bomb;
+import grupp18.bomb.defuser.Enemy.Enemy;
 import grupp18.bomb.defuser.Entity.EntityMoveable;
 import grupp18.bomb.defuser.Entity.IEntity;
 import grupp18.bomb.defuser.Fan.EDirections;
@@ -10,7 +11,6 @@ import grupp18.bomb.defuser.Fan.FanHandler;
 import grupp18.bomb.defuser.PowerUp.PowerUpManger;
 import grupp18.bomb.defuser.Tiles.ITile;
 import grupp18.bomb.defuser.Tiles.TileRec;
-import grupp18.bomb.defuser.bomb.Bomb;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,7 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
@@ -73,8 +74,8 @@ public class World {
 		powerUpManger = new PowerUpManger(this,bomb);
 	}
 	
-	public void addAI(Enemy enemy){
-		enemies.add(enemy);
+	public void addEnemy(Texture texture, float width, float height, float x, float y, float speed, Color color){
+		enemies.add(new Enemy(texture, enemies.size(), new Vector2(x, y), color, this, speed));
 	}
 	
 	public void setBomb(Bomb bomb){
@@ -127,6 +128,14 @@ public class World {
 			bomb.render(batch);
 			MyGame.res.font.draw(batch, "Hurry up!!! You only got " + (int)bomb.getTimeLeft() + " time left!"+ "gravity" + getGravity(), 20, 300);
 		}
+	}
+	
+	public boolean CollisionWithAnyTile(Rectangle hitbox){
+		for(ITile tile : collisionLayer){
+			if(hitbox.overlaps(tile.getHitBox()))
+				return true;
+		}
+		return false;
 	}
 	
 	public ITile CollisionEntityTile(IEntity entity)

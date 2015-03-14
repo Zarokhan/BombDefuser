@@ -1,7 +1,7 @@
 package grupp18.bomb.defuser;
 
-import grupp18.bomb.defuser.statesystem.StateManager;
-import grupp18.bomb.defuser.utilities.ResourceManager;
+import grupp18.bomb.defuser.StateSystem.StateManager;
+import grupp18.bomb.defuser.Utilities.ResourceManager;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;

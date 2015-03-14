@@ -1,13 +1,13 @@
-package grupp18.bomb.defuser.allstates;
+package grupp18.bomb.defuser.AllStates;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 import grupp18.bomb.defuser.MyGame;
-import grupp18.bomb.defuser.statesystem.State;
-import grupp18.bomb.defuser.statesystem.States;
-import grupp18.bomb.defuser.utilities.Button;
+import grupp18.bomb.defuser.StateSystem.State;
+import grupp18.bomb.defuser.StateSystem.EStates;
+import grupp18.bomb.defuser.Utilities.Button;
 
 public class LevelState extends State {
 	
@@ -32,11 +32,11 @@ public class LevelState extends State {
 	public void update(float delta) {
 		// GameState btn
 		if(btnGame.update())
-			game.getStateManager().setState(States.Game);
+			game.getStateManager().setState(EStates.Game);
 		
 		// AI test btn
 		if(btnAI.update())
-			game.getStateManager().setState(States.AItest);
+			game.getStateManager().setState(EStates.AItest);
 	}
 
 	@Override

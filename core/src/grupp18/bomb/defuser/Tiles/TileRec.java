@@ -1,6 +1,7 @@
 package grupp18.bomb.defuser.Tiles;
 
-import grupp18.bomb.defuser.utilities.GameObject;
+import grupp18.bomb.defuser.MyGame;
+import grupp18.bomb.defuser.Utilities.GameObject;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -12,7 +13,12 @@ public class TileRec extends GameObject implements ITile{
 	public TileRec(Texture texture, float x, float y, float width, float height, Color color) {
 		super(texture, 0, 0, 1, 1, x, y, width, height, color);
 	}
-
+	
+	public void updatePos(float x, float y){
+		this.pos.x = x;
+		this.pos.y = y;
+	}
+	
 	@Override
 	public int getId() {
 		return 0;

@@ -1,8 +1,8 @@
-package grupp18.bomb.defuser.statesystem;
+package grupp18.bomb.defuser.StateSystem;
 
 // WorldMap väljer du level
 
-public enum States {
+public enum EStates {
 	Meny, 
 	WorldMap, 
 	Game,

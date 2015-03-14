@@ -1,7 +1,7 @@
 package grupp18.bomb.defuser.PowerUp;
 
+import grupp18.bomb.defuser.Bomb.Bomb;
 import grupp18.bomb.defuser.World.World;
-import grupp18.bomb.defuser.bomb.Bomb;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +13,14 @@ public class PowerUpManger {
 	private World world;
 	private Bomb bomb;
 	private List<PowerUp> powerUps;
+	
 	public PowerUpManger(World _world, Bomb _bomb){
 		this.world = _world;
 		this.bomb = _bomb;
 		
 		powerUps = new ArrayList<PowerUp>();
-		powerUps.add(new PowerUp(bomb,world,100, 440,500, 0, 5));
-		powerUps.add(new PowerUp(bomb,world,450, 300,300, 1, 5));
+		powerUps.add(new PowerUp(bomb, world, 100, 440, 500, 0, 5));
+		powerUps.add(new PowerUp(bomb, world, 450, 300, 300, 1, 5));
 	}
 	
 	public void update(float delta){

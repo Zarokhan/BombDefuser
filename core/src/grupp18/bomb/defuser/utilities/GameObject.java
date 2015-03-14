@@ -1,4 +1,4 @@
-package grupp18.bomb.defuser.utilities;
+package grupp18.bomb.defuser.Utilities;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;

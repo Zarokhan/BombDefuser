@@ -1,4 +1,4 @@
-package grupp18.bomb.defuser.statesystem;
+package grupp18.bomb.defuser.StateSystem;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 

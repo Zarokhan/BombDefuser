@@ -1,9 +1,9 @@
-package grupp18.bomb.defuser.allstates;
+package grupp18.bomb.defuser.AllStates;
 
 import grupp18.bomb.defuser.MyGame;
+import grupp18.bomb.defuser.StateSystem.State;
+import grupp18.bomb.defuser.Utilities.Controller;
 import grupp18.bomb.defuser.World.World;
-import grupp18.bomb.defuser.statesystem.State;
-import grupp18.bomb.defuser.utilities.Controller;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

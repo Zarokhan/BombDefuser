@@ -1,8 +1,8 @@
 package grupp18.bomb.defuser.PowerUp;
 
 import grupp18.bomb.defuser.MyGame;
+import grupp18.bomb.defuser.Bomb.Bomb;
 import grupp18.bomb.defuser.World.World;
-import grupp18.bomb.defuser.bomb.Bomb;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
@@ -10,25 +10,24 @@ import com.badlogic.gdx.math.Vector2;
 
 public class PowerUp {
 	
-	
 	private World world;
 	private Bomb bomb;
-	private float newSpeed, heroBaseSpeed, timer, time, worldTimer;//, newGravity, baseGravity;
+	private float newSpeed, heroBaseSpeed, timer, time, worldTimer; // newGravity, baseGravity;
 	private Rectangle hitBox;
 	private Vector2 pos;
 	private int currentState;
 	private boolean hitTrue, active;
 	
-	public PowerUp(Bomb bomb,World world, float newSpeed, float x, float y, int currentState, float time){
+	public PowerUp(Bomb bomb, World world, float newSpeed, float x, float y, int currentState, float time){
 		this.world = world;
 		this.bomb = bomb;
 		this.currentState = currentState;
 		this.newSpeed = newSpeed;
 		this.time = time;
-		this.pos = new Vector2(x,y);
+		this.pos = new Vector2(x, y);
 		active = true;
 		heroBaseSpeed = this.world.getHero().getSpeed();
-		hitBox = new Rectangle(x,y,32,32);
+		hitBox = new Rectangle(x, y, 32, 32);
 		hitTrue = false;
 	}
 	
@@ -52,7 +51,6 @@ public class PowerUp {
 			break;
 			case 1:
 				if(heroHit()){
-
 					hitTrue = true;
 					active = false;
 					timer = time;
