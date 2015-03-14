@@ -17,6 +17,7 @@ public class EntityMoveable extends GameObject implements IEntity{
 	protected float speed;
 	protected World world;
 	protected Boolean isOnGround;
+	protected Rectangle headRec, feetRec;
 	
 	public EntityMoveable(Texture tex, float sourceX, float sourceY, float sourceWidth, float sourceHeight, float x, float y, float width, float height, Color color, World world, float speed) {
 		super(tex, sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height, color);
@@ -26,6 +27,9 @@ public class EntityMoveable extends GameObject implements IEntity{
 		this.velocity = new Vector2(0, 0);
 		this.forces = new Vector2();
 		this.isOnGround = false;
+		
+		headRec = new Rectangle(0, 0, width, 10);
+		feetRec = new Rectangle(0, 0, width, 10);
 	}
 	
 	public void reset(){
@@ -45,6 +49,12 @@ public class EntityMoveable extends GameObject implements IEntity{
 		moveVertical(delta);
 		//System.out.println(velocity + " - " + forces);
 		forces = new Vector2(0, 0);
+		
+		// update head and feet rectangles
+		headRec.x = this.pos.x;
+		headRec.y = this.pos.y + height - headRec.height;
+		feetRec.x = this.pos.x;
+		feetRec.y = this.pos.y;
 	}
 	
 	protected void moveVertical(float delta){
@@ -109,7 +119,15 @@ public class EntityMoveable extends GameObject implements IEntity{
 		forces.x += x;
 		forces.y += y;
 	}
-
+	
+	public Rectangle getHeadRec(){
+		return headRec;
+	}
+	
+	public Rectangle getFeetRec(){
+		return feetRec;
+	}
+	
 	@Override
 	public Rectangle getHitBox() {
 		return super.getHitbox();

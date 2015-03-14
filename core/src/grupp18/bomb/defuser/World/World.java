@@ -74,8 +74,8 @@ public class World {
 		powerUpManger = new PowerUpManger(this,bomb);
 	}
 	
-	public void addEnemy(Texture texture, float width, float height, float x, float y, float speed, Color color){
-		enemies.add(new Enemy(texture, enemies.size(), new Vector2(x, y), color, this, speed));
+	public void addEnemy(Texture texture, float x, float y, float width, float height, float speed, Color color){
+		enemies.add(new Enemy(texture, enemies.size(), new Vector2(x, y), width, height, color, this, speed));
 	}
 	
 	public void setBomb(Bomb bomb){
@@ -132,7 +132,8 @@ public class World {
 	
 	public boolean CollisionWithAnyTile(Rectangle hitbox){
 		for(ITile tile : collisionLayer){
-			if(hitbox.overlaps(tile.getHitBox()))
+			Rectangle tempRec = new Rectangle();
+			if(Intersector.intersectRectangles(hitbox, tile.getHitBox(), tempRec))
 				return true;
 		}
 		return false;

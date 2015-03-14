@@ -24,7 +24,8 @@ public class AItestState extends State {
 		
 		world = new World(-30);
 		world.setBomb(null);
-		world.addEnemy(MyGame.res.dot, 50, 50, 0, 500, 30, Color.BLUE);
+		world.addEnemy(MyGame.res.dot, 300, 500, 50, 70, 30, Color.BLUE);
+		world.addEnemy(MyGame.res.dot, 500, 250, 50, 70, 30, Color.PINK);
 		
 		control = new Controller(world.getHero());
 		camera = new OrthographicCamera(MyGame.WIDTH, MyGame.HEIGHT);

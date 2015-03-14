@@ -14,7 +14,7 @@ public class ResourceManager {
 	public Texture dot, logo, europe, character,fyrkant;
 	public Texture btnPlay, btnAI, btnGame;
     public BitmapFont font;
-    public Sound select;
+    public Sound select, hurt;
 	
 	public ResourceManager(){
 		logo = new Texture(Gdx.files.internal("logo.png"));
@@ -34,5 +34,6 @@ public class ResourceManager {
         font = new BitmapFont(Gdx.files.internal("font.fnt"));
         
         select = Gdx.audio.newSound(Gdx.files.internal("select.wav"));
+        hurt = Gdx.audio.newSound(Gdx.files.internal("hurt.wav"));
 	}
 }
