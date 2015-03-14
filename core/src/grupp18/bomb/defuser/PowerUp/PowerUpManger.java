@@ -19,8 +19,8 @@ public class PowerUpManger {
 		this.bomb = _bomb;
 		
 		powerUps = new ArrayList<PowerUp>();
-		powerUps.add(new PowerUp(bomb, world, 100, 440, 500, 0, 5));
-		powerUps.add(new PowerUp(bomb, world, 450, 300, 300, 1, 5));
+		powerUps.add(new PowerUp(bomb, world, 100, 440, 500, EPowerUp.powerup1, 5));
+		powerUps.add(new PowerUp(bomb, world, 450, 300, 300, EPowerUp.powerup2, 5));
 	}
 	
 	public void update(float delta){

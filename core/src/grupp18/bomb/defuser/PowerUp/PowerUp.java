@@ -15,13 +15,13 @@ public class PowerUp {
 	private float newSpeed, heroBaseSpeed, timer, time, worldTimer; // newGravity, baseGravity;
 	private Rectangle hitBox;
 	private Vector2 pos;
-	private int currentState;
+	private EPowerUp powerUp;
 	private boolean hitTrue, active;
 	
-	public PowerUp(Bomb bomb, World world, float newSpeed, float x, float y, int currentState, float time){
+	public PowerUp(Bomb bomb, World world, float newSpeed, float x, float y, EPowerUp powerUp, float time){
 		this.world = world;
 		this.bomb = bomb;
-		this.currentState = currentState;
+		this.powerUp = powerUp;
 		this.newSpeed = newSpeed;
 		this.time = time;
 		this.pos = new Vector2(x, y);
@@ -32,8 +32,8 @@ public class PowerUp {
 	}
 	
 	public void update(float delta){
-		switch(currentState){
-			case 0:
+		switch(powerUp){
+			case powerup1:
 				if(heroHit()){
 					world.getHero().setSpeed(newSpeed);
 					hitTrue = true;
@@ -49,7 +49,7 @@ public class PowerUp {
 					world.getHero().setSpeed(heroBaseSpeed);
 				}
 			break;
-			case 1:
+			case powerup2:
 				if(heroHit()){
 					hitTrue = true;
 					active = false;
