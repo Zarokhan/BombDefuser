@@ -1,12 +1,12 @@
-package grupp18.bomb.defuser.StateSystem;
+package grupp18.bomb.defuser.Statesystem;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import grupp18.bomb.defuser.MyGame;
-import grupp18.bomb.defuser.AllStates.AItestState;
-import grupp18.bomb.defuser.AllStates.GameState;
-import grupp18.bomb.defuser.AllStates.LevelState;
-import grupp18.bomb.defuser.AllStates.MenyState;
+import grupp18.bomb.defuser.Allstates.AItestState;
+import grupp18.bomb.defuser.Allstates.GameState;
+import grupp18.bomb.defuser.Allstates.LevelState;
+import grupp18.bomb.defuser.Allstates.MenyState;
 
 public class StateManager{
 	

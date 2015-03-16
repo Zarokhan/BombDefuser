@@ -1,7 +1,7 @@
-package grupp18.bomb.defuser.AllStates;
+package grupp18.bomb.defuser.Allstates;
 
 import grupp18.bomb.defuser.MyGame;
-import grupp18.bomb.defuser.StateSystem.State;
+import grupp18.bomb.defuser.Statesystem.State;
 import grupp18.bomb.defuser.Utilities.Controller;
 import grupp18.bomb.defuser.World.World;
 

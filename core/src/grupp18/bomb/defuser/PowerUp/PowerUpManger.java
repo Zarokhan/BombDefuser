@@ -19,10 +19,9 @@ public class PowerUpManger {
 		this.bomb = _bomb;
 		
 		powerUps = new ArrayList<PowerUp>();
-		powerUps.add(new PowerUp(bomb, world, 100, 440, 500, EPowerUp.powerup1, 5));
-		powerUps.add(new PowerUp(bomb, world, 450, 300, 300, EPowerUp.powerup2, 5));
-	}
-	
+		powerUps.add(new PowerUp(bomb, world, 100, 440, 500, EPowerUp.IncreasingSpeed, 5));
+		powerUps.add(new PowerUp(bomb, world, 450, 300, 300, EPowerUp.SlowTimeOnBomb, 5));
+	}	
 	public void update(float delta){
 		for(PowerUp p: powerUps)
 			p.update(delta);
@@ -33,7 +32,6 @@ public class PowerUpManger {
 				break;
 			}
 		}
-		
 	}
 	public void render(SpriteBatch batch){
 		for(PowerUp p: powerUps)

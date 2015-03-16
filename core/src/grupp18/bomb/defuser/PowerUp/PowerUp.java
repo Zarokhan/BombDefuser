@@ -33,7 +33,7 @@ public class PowerUp {
 	
 	public void update(float delta){
 		switch(powerUp){
-			case powerup1:
+			case IncreasingSpeed:
 				if(heroHit()){
 					world.getHero().setSpeed(newSpeed);
 					hitTrue = true;
@@ -49,7 +49,7 @@ public class PowerUp {
 					world.getHero().setSpeed(heroBaseSpeed);
 				}
 			break;
-			case powerup2:
+			case SlowTimeOnBomb:
 				if(heroHit()){
 					hitTrue = true;
 					active = false;

@@ -1,12 +1,12 @@
-package grupp18.bomb.defuser.AllStates;
+package grupp18.bomb.defuser.Allstates;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 import grupp18.bomb.defuser.MyGame;
-import grupp18.bomb.defuser.StateSystem.State;
-import grupp18.bomb.defuser.StateSystem.EStates;
+import grupp18.bomb.defuser.Statesystem.EStates;
+import grupp18.bomb.defuser.Statesystem.State;
 import grupp18.bomb.defuser.Utilities.Button;
 import grupp18.bomb.defuser.Utilities.GameObject;
 

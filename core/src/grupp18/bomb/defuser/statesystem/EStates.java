@@ -1,4 +1,4 @@
-package grupp18.bomb.defuser.StateSystem;
+package grupp18.bomb.defuser.Statesystem;
 
 // WorldMap väljer du level
 
